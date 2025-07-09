@@ -1,11 +1,81 @@
-/* 
+.Stacked {
+  position: relative;
+  width: 300px;
+  margin: 50px auto;
+  font-family: sans-serif;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.card-shadow {
+  position: absolute;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #acacac;
+  box-shadow: 0 2px 4px rgba(116, 116, 116, 0.1);
+  inset: 0;
+  transform-origin: top left;
+}
 
-*/
+.sombra1 {
+  transform: translate(16px, 16px) scale(0.92);
+  z-index: 0;
+}
+
+.sombra2 {
+  transform: translate(8px, 8px) scale(0.96);
+  z-index: 1;
+}
+
+.main-card {
+  position: relative;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #d8d8d8;
+  padding: 20px;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.count {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+.tarea-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.boton-eliminar {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  visibility: hidden;
+}
+
+.tarea-item:hover .boton-eliminar {
+  visibility: visible;}

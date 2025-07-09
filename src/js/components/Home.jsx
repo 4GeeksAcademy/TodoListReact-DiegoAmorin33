@@ -1,28 +1,53 @@
-import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
+import "/workspaces/TodoListReact-DiegoAmorin33/src/styles/index.css";
 
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+  const [tarea, setTarea] = useState("");
+  const [lista, setLista] = useState([]);
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  const manejarCambio = (e) => {
+    setTarea(e.target.value);
+  };
+
+  const manejarEnter = (e) => {
+    if (e.key === "Enter" && tarea.trim() !== "") {
+      setLista([...lista, tarea]);
+      setTarea("");
+    }
+  };
+
+  const eliminarTarea = (indexAEliminar) => {
+  setLista(lista.filter((_, index) => index !== indexAEliminar));
+};
+
+
+  return (
+    <div className="Stacked">
+      <div className="card-shadow sombra1"></div>
+      <div className="card-shadow sombra2"></div>
+      <div className="main-card">
+        <input
+          type="text"
+          placeholder="No hay tareas, añadir tareas?"
+          value={tarea}
+          onChange={manejarCambio}
+          onKeyDown={manejarEnter}
+        />
+       <ul>
+          {lista.map((item, index) => (
+            <li key={index} className="tarea-item">
+              <span>{item}</span>
+              <button
+                className="boton-eliminar" onClick={() => eliminarTarea(index)}> X
+              </button>
+            </li>
+          ))}
+        </ul>
+        <p className="count">{lista.length} Tareas pendientes</p>
+      </div>
+    </div>
+  );
 };
 
 export default Home;
